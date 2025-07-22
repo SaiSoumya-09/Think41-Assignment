@@ -1,0 +1,20 @@
+editor.addEventListener('click', highlightCurrentLine);
+editor.addEventListener('keyup', highlightCurrentLine);
+
+function highlightCurrentLine() {
+  const lines = editor.value.split('\n');
+  const position = editor.selectionStart;
+  const line = editor.value.substr(0, position).split("\n").length;
+  
+  const start = editor.value.lastIndexOf('\n', position - 1) + 1;
+  const end = editor.value.indexOf('\n', position);
+  
+  const highlighted = [...lines];
+  if (line - 1 < lines.length) {
+    highlighted[line - 1] = `%${highlighted[line - 1]}%`;
+  }
+
+  console.clear();
+  console.log('Current Line: ' + line);
+  // You can add your own visual highlight logic if using CodeMirror or Ace Editor.
+}
