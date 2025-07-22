@@ -1,0 +1,15 @@
+const editor = document.getElementById('editor');
+const lineNumbers = document.getElementById('lineNumbers');
+
+function updateLineNumbers() {
+  const lines = editor.value.split('\n').length;
+  lineNumbers.innerHTML = '';
+  for (let i = 1; i <= lines; i++) {
+    lineNumbers.innerHTML += i + '\n';
+  }
+}
+
+editor.addEventListener('input', updateLineNumbers);
+editor.addEventListener('scroll', () => {
+  lineNumbers.scrollTop = editor.scrollTop;
+});
