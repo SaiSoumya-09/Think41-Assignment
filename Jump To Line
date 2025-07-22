@@ -1,0 +1,14 @@
+function jumpToLine() {
+  const line = parseInt(document.getElementById('lineInput').value);
+  const lines = editor.value.split('\n');
+
+  if (line > 0 && line <= lines.length) {
+    let pos = 0;
+    for (let i = 0; i < line - 1; i++) {
+      pos += lines[i].length + 1; // +1 for the newline
+    }
+    editor.focus();
+    editor.setSelectionRange(pos, pos);
+    highlightCurrentLine();
+  }
+}
